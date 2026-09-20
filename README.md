@@ -1,62 +1,55 @@
 # RoBERTa Sentiment Analysis
 
-A Natural Language Processing project that uses the RoBERTa transformer model for three-class sentiment classification: **Positive, Neutral, and Negative**.
+A Natural Language Processing (NLP) project that uses the **RoBERTa Transformer model** for classifying text into **Positive, Negative, and Neutral** sentiment categories.
 
-## Project Overview
+## Overview
 
-This project implements sentiment analysis using **RoBERTa**, a transformer-based language model.
+This project implements a complete sentiment analysis pipeline using **RoBERTa (`roberta-base`)** and **PyTorch**.
 
-The project covers the complete NLP workflow, including:
+The workflow includes:
 
-- Data cleaning
-- Text preprocessing
-- Sentiment visualization
+- Data cleaning and preprocessing
+- Sentiment distribution analysis
+- Word cloud visualization
 - Dataset balancing
-- RoBERTa tokenization
-- Model fine-tuning
+- Tokenization using RoBERTa Tokenizer
+- Fine-tuning RoBERTa for sentiment classification
 - Model evaluation
-- Sentiment prediction
-- Prediction confidence
+- Sentiment prediction with confidence scores
 
 ## Features
 
-- Remove duplicate and missing records
-- Convert text to lowercase
-- Remove special characters and numbers
-- Remove URLs
-- Remove extra whitespace
-- Tokenization
-- Stopword removal
-- Lemmatization
-- Sentiment distribution visualization
-- Word clouds for different sentiment classes
-- TF-IDF vectorization
-- Balanced dataset creation
-- RoBERTa tokenizer
-- RoBERTa sequence classification
-- Model training using PyTorch
-- Accuracy evaluation
-- Classification report
-- Sentiment prediction with confidence score
+- 3-class sentiment classification
+- Positive, Negative, and Neutral sentiment detection
+- Balanced dataset with equal samples from each class
+- Text preprocessing using NLTK
+- RoBERTa-based Transformer model
+- PyTorch training pipeline
+- Model evaluation using Accuracy and Classification Report
+- Confidence score for predictions
+- Sentiment visualization using charts and word clouds
 
 ## Tech Stack
 
 - Python
+- PyTorch
+- Hugging Face Transformers
+- RoBERTa
+- NLTK
 - Pandas
 - NumPy
-- NLTK
 - Scikit-learn
 - Matplotlib
 - Seaborn
 - WordCloud
-- PyTorch
-- Hugging Face Transformers
-- RoBERTa
+- Jupyter Notebook
 
 ## Sentiment Classes
 
+The model classifies text into three categories:
+
 | Label | Sentiment |
-|---|---|
+|------|-----------|
 | 0 | Negative |
 | 1 | Neutral |
 | 2 | Positive |
@@ -70,15 +63,15 @@ Data Cleaning
      ↓
 Text Preprocessing
      ↓
-Sentiment Visualization
+Sentiment Distribution Analysis
      ↓
 Dataset Balancing
      ↓
-Train/Test Split
-     ↓
 RoBERTa Tokenization
      ↓
-RoBERTa Fine-Tuning
+RoBERTa Model Initialization
+     ↓
+Model Training
      ↓
 Model Evaluation
      ↓
@@ -88,73 +81,91 @@ Confidence Score
 
 NLP Preprocessing
 
-The project performs the following preprocessing steps:
+The text data is processed using the following steps:
 
 Convert text to lowercase
-Remove special characters and numbers
 Remove URLs
-Remove extra whitespace
-Tokenize text
-Remove stopwords
-Lemmatize tokens
-Join processed tokens
-Encode sentiment labels
-Model
-
-The project uses the pretrained:
-
-roberta-base
-
-The RoBERTa model is fine-tuned for three-class sentiment classification using PyTorch and Hugging Face Transformers.
-
-Training Configuration
-Number of sentiment classes: 3
-Maximum sequence length: 128
-Batch size: 16
-Learning rate: 2e-5
-Number of epochs: 3
-Optimizer: AdamW
+Remove special characters and numbers
+Remove unnecessary whitespace
+Tokenization
+Stopword removal
+Lemmatization
+Convert processed text into model-ready input
 Dataset Balancing
 
-The project creates a balanced dataset containing samples from all three sentiment classes:
+The dataset was balanced so that each sentiment class contains an equal number of samples.
 
-Negative
-Neutral
-Positive
+Negative    → 1666 samples
+Neutral     → 1666 samples
+Positive    → 1666 samples
 
-The balanced dataset is then divided into training and testing sets using a stratified split.
+Total       → 4998 samples
+Model
 
+The project uses:
+
+RoBERTa Base (roberta-base)
+
+RoBERTa is a Transformer-based language model developed for improved natural language understanding.
+
+The model is fine-tuned for a 3-class sentiment classification task.
+
+Training Configuration
+Parameter	Value
+Model	roberta-base
+Number of Classes	3
+Epochs	3
+Batch Size	16
+Learning Rate	2e-5
+Maximum Sequence Length	128
+Optimizer	AdamW
+Framework	PyTorch
 Model Evaluation
 
-The model evaluates sentiment predictions using:
+The trained model is evaluated using:
 
 Accuracy
 Classification Report
+Precision
+Recall
+F1-Score
 
-The classification report provides performance information for the Negative, Neutral, and Positive classes.
+The notebook also includes prediction functionality that returns the predicted sentiment along with its confidence score.
 
 Prediction
 
-The trained model can take new text as input and return:
-
-Predicted sentiment
-Prediction confidence
+The model can be used to predict the sentiment of new text.
 
 Example:
 
 Input:
-"The product quality is excellent"
+"I really enjoyed this product."
 
 Output:
-Sentiment: positive
-Confidence: 0.xx
+Positive
+
+Confidence:
+High
+Screenshots
+Sentiment Distribution
+
+Positive Word Cloud
+
+Negative Word Cloud
+
+Neutral Word Cloud
+
 Project Structure
 RoBERTa-Sentiment-Analysis/
 │
-├── sentiment_analysis_using_roberta.ipynb
+├── screenshots/
+│   ├── sentiment-distribution.png
+│   ├── positive-wordcloud.png
+│   ├── negative-wordcloud.png
+│   └── neutral-wordcloud.png
+│
 ├── data.csv
-├── requirements.txt
-├── .gitignore
+├── sentiment_analysis_using_roberta.ipynb
 └── README.md
 Installation
 
@@ -162,56 +173,35 @@ Clone the repository:
 
 git clone https://github.com/Rohan30020407/RoBERTa-Sentiment-Analysis.git
 
-Navigate to the project directory:
+Navigate to the project folder:
 
 cd RoBERTa-Sentiment-Analysis
 
-Install the required dependencies:
+Install the required libraries:
 
-pip install -r requirements.txt
+pip install pandas numpy matplotlib seaborn scikit-learn nltk wordcloud torch transformers
 Running the Project
 
 Open the Jupyter Notebook:
 
+jupyter notebook
+
+Then open:
+
 sentiment_analysis_using_roberta.ipynb
 
-Run the notebook cells sequentially to perform:
+Run the notebook cells sequentially to perform data preprocessing, visualization, model training, evaluation, and sentiment prediction.
 
-Data loading
-Data cleaning
-NLP preprocessing
-Visualization
-Dataset balancing
-RoBERTa training
-Model evaluation
-Sentiment prediction
 Future Improvements
-Build an interactive Streamlit application
-Deploy the sentiment analysis model
-Add more evaluation metrics
-Improve inference performance
-Support real-time sentiment analysis
-Train with larger datasets
+Train for more epochs
+Experiment with other Transformer models
+Improve model performance through hyperparameter tuning
+Deploy the model as a web application
+Create a REST API for sentiment prediction
+Add real-time sentiment analysis
 Author
 
 Rohan Soni
 
-GitHub: https://github.com/Rohan30020407
-
-## Screenshots
-
-### Sentiment Distribution
-
-![Sentiment Distribution](./screenshots/sentiment-distribution.png)
-
-### Positive Word Cloud
-
-![Positive Word Cloud](./screenshots/positive-wordcloud.png)
-
-### Negative Word Cloud
-
-![Negative Word Cloud](./screenshots/negative-wordcloud.png)
-
-### Neutral Word Cloud
-
-![Neutral Word Cloud](./screenshots/neutral-wordcloud.png)
+GitHub:
+https://github.com/Rohan30020407

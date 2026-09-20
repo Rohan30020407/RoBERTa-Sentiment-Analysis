@@ -197,3 +197,21 @@ Author
 Rohan Soni
 
 GitHub: https://github.com/Rohan30020407
+
+## Screenshots
+
+### Sentiment Distribution
+
+![Sentiment Distribution](./screenshots/sentiment-distribution.png)
+
+### Positive Word Cloud
+
+![Positive Word Cloud](./screenshots/positive-wordcloud.png)
+
+### Negative Word Cloud
+
+![Negative Word Cloud](./screenshots/negative-wordcloud.png)
+
+### Neutral Word Cloud
+
+![Neutral Word Cloud](./screenshots/neutral-wordcloud.png)
